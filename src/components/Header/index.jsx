@@ -1,8 +1,16 @@
+import useVisualizeDijkstra from '../../hooks/useVisualizeDijkstra';
+import useClearBoard from '../../hooks/useClearBoard';
+import { useAlgorithmContext } from '../../contexts/Context';
 import Logo from '../../styles/path.svg';
 import { useRouter } from 'next/router';
 import * as S from './styles';
 
 function Header() {
+  const { isAnimating } = useAlgorithmContext();
+  const clearBoard = useClearBoard('keep-walls');
+  const resetBoard = useClearBoard('reset');
+  const visualizeDijkstra = useVisualizeDijkstra();
+
   const router = useRouter()
 
   return (
@@ -15,6 +23,7 @@ function Header() {
           <li>
             <S.Button
               mainBtn
+              disabled={isAnimating}
               onClick={() => {
                 visualizeDijkstra();
                 router.push(
@@ -30,12 +39,12 @@ function Header() {
             </S.Button>
           </li>
           <li>
-            <S.Button>
+            <S.Button disabled={isAnimating} onClick={clearBoard}>
               Clear Board
             </S.Button>
           </li>
           <li>
-            <S.Button>
+            <S.Button disabled={isAnimating} onClick={resetBoard}>
               Reset Board
             </S.Button>
           </li>
