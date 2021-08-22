@@ -1,8 +1,14 @@
 import { useEffect } from 'react';
 import Node from '../Node';
+import useMouseActions from '../../hooks/useMouseActions';
+import { useAlgorithmContext } from '../../contexts/Context';
 import * as S from './styles';
 
 function Grid() {
+  const { grid, setGrid, setStartNode, setEndNode, NUMBER_OF_ROWS, NUMBER_OF_COLS, START_NODE, END_NODE } = useAlgorithmContext();
+
+  const mouseActionsList = useMouseActions();
+
   class Cell {
     constructor(row, col) {
       this.row = row;
@@ -35,7 +41,7 @@ function Grid() {
         {grid?.map((currentRow, rowIdx) => (
           <tr key={rowIdx} id={`row-${rowIdx}`}>
             {currentRow.map((cell, cellIdx) => {
-              return <Node key={cellIdx} {...cell} />;
+              return <Node key={cellIdx} {...cell} {...mouseActionsList} />;
             })}
           </tr>
         ))}
