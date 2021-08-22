@@ -35,17 +35,17 @@ function Header() {
                 );
               }}
             >
-              Visualize Dijkstra
+              Visualizar Dijkstra
             </S.Button>
           </li>
           <li>
             <S.Button disabled={isAnimating} onClick={clearBoard}>
-              Clear Board
+              Limpar Board
             </S.Button>
           </li>
           <li>
             <S.Button disabled={isAnimating} onClick={resetBoard}>
-              Reset Board
+              Resetar Board
             </S.Button>
           </li>
         </S.Menu>

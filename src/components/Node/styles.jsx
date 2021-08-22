@@ -1,4 +1,18 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const specialNodeStyles = css`
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  animation-name: specialNodes;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  animation-direction: alternate;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  animation-play-state: running;
+  border: 2px solid yellow !important;
+`;
 
 export const Node = styled.td`
   border: 1px solid rgb(175, 216, 248);
@@ -7,45 +21,21 @@ export const Node = styled.td`
 
   &.node-start {
     background-image: url(/img/start.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    animation-name: specialNodes;
-    animation-duration: 2s;
-    animation-timing-function: ease-out;
-    animation-direction: alternate;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-play-state: running;
-    border: 2px solid yellow !important;
-    border-radius: 5px;
-    background-color: white !important;
+    ${specialNodeStyles}
   }
 
   &.node-end {
     background-image: url(/img/finish.svg);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    animation-name: specialNodes;
-    animation-duration: 2s;
-    animation-timing-function: ease-out;
-    animation-direction: alternate;
-    animation-iteration-count: 1;
-    animation-fill-mode: forwards;
-    animation-play-state: running;
-    border: 2px solid yellow !important;
-    border-radius: 5px;
-    background-color: white !important;
+    ${specialNodeStyles}
   }
 
   @keyframes specialNodes {
     0% {
-      transform: scale(0.3);
+      transform: scale(0.5);
     }
 
     50% {
-      transform: scale(1.2);
+      transform: scale(1.1);
     }
 
     100% {
@@ -86,7 +76,7 @@ export const Node = styled.td`
   }
 
   &.node-instant-visited {
-    background-color: rgba(0, 0, 0, 1);
+    background-color: rgba(0, 0, 0, 0.9);
     border-color: #c0c0c0;
   }
 
@@ -169,18 +159,18 @@ export const Node = styled.td`
   @keyframes wallAnimation {
     0% {
       transform: scale(0.3);
-      background-color: rgb(0, 79, 112);
+      background-color: rgb(0, 100, 143);
     }
 
     50% {
       transform: scale(1.2);
-      background-color: rgb(0, 79, 112);
+      background-color: rgb(0, 100, 143);
     }
 
     100% {
       transform: scale(1);
-      background-color: rgb(0, 79, 112);
-      border-color: rgb(0, 79, 112);
+      background-color: rgb(0, 100, 143);
+      border-color: rgb(0, 100, 143);
     }
   }
 `;
